@@ -36,8 +36,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker rm -f timesheet-app || true'
-                sh 'docker run -d --name timesheet-app -p 8081:8080 amanihass/timesheet-devops:latest'
+                sh 'docker compose down || true'
+                sh 'docker compose up -d'
             }
         }
     }
