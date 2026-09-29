@@ -23,7 +23,15 @@ pipeline {
                 sh 'mvn clean package -Dmaven.test.skip=true'
             }
         }
+	 
 
+	  stage ('SonarQube Analysis') {
+		steps {
+                     withSonarQubeEnv('SonarQube') {
+                    sh 'mvn sonar:sonar -Dsonar.projectKey=timesheet-devops -Dsonar.projectName=timesheet-devops'
+                } 
+	}
+}
         stage('Docker Build') {
             steps {
                 sh 'docker build -t amanihass/timesheet-devops:latest .'
