@@ -20,7 +20,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean package -Dmaven.test.skip=true'
+                sh 'mvn clean package'
             }
         }
 	 
@@ -28,7 +28,7 @@ pipeline {
 	  stage ('SonarQube Analysis') {
 		steps {
                      withSonarQubeEnv('SonarQube') {
-                       sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.projectKey=timesheet-devops -Dsonar.projectName=timesheet-devops'
+                       sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.projectKey=timesheet-devops -Dsonar.projectName=timesheet-devops -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
                 } 
 	}
 }
