@@ -5,6 +5,11 @@ pipeline {
         jdk 'JAVA_HOME'
         maven 'M2_HOME'
     }
+    
+    triggers {
+	githubPush()
+	
+	}	
 
     stages {
         stage('Checkout') {
