@@ -28,7 +28,7 @@ pipeline {
 	  stage ('SonarQube Analysis') {
 		steps {
                      withSonarQubeEnv('SonarQube') {
-                       sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.projectKey=timesheet-devops -Dsonar.projectName=timesheet-devops -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+                       sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.projectKey=timesheet-devops -Dsonar.projectName=timesheet-devops -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml'
                 } 
 	}
 }
